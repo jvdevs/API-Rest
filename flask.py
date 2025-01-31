@@ -8,3 +8,12 @@ usuarios = []
 def listar_usuarios():
     return jsonify(usuarios)
 
+@app.route('/usuarios', methods=['POST'])
+def adicionar_usuario():
+    dados = request.get_json()
+    
+    if 'nome' in dados:
+        usuarios.append(dados)
+        return jsonify({"mensagem": "Usuário cadastrado com sucesso!"}), 201
+    else:
+        return jsonify({"erro": "Nome do usuário é obrigatório!"}), 400
