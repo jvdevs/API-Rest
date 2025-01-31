@@ -1,2 +1,2 @@
 # API-Rest
-API REST utilizando Flask/FastAPI
+API REST utilizando Flask/FastAPI e POSTMAN
