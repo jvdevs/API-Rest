@@ -23,3 +23,14 @@ def obter_usuario(indice):
     if 0 <= indice < len(usuarios):
         return jsonify(usuarios[indice])
     return jsonify({"erro": "Usuário não encontrado."}), 404
+
+
+@app.route('/usuarios/<int:indice>', methods=['DELETE'])
+def deletar_usuario(indice):
+    if 0 <= indice < len(usuarios):
+        usuario_removido = usuarios.pop(indice)
+        return jsonify({"mensagem": "Usuário removido com sucesso!", "usuario": usuario_removido})
+    return jsonify({"erro": "Usuário não encontrado."}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
