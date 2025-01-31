@@ -17,3 +17,9 @@ def adicionar_usuario():
         return jsonify({"mensagem": "Usuário cadastrado com sucesso!"}), 201
     else:
         return jsonify({"erro": "Nome do usuário é obrigatório!"}), 400
+
+@app.route('/usuarios/<int:indice>', methods=['GET'])
+def obter_usuario(indice):
+    if 0 <= indice < len(usuarios):
+        return jsonify(usuarios[indice])
+    return jsonify({"erro": "Usuário não encontrado."}), 404
